@@ -3,7 +3,6 @@ layout: post
 title:  "Leveraging Query Stats"
 date:   2023-06-26 14:16:27 -0400
 parent: Posts
-categories: jekyll update
 ---
 
 # {{ page.title }}
