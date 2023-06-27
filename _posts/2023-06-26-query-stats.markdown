@@ -6,7 +6,9 @@ parent: Posts
 ---
 
 # {{ page.title }}
-![before-after.png](/images/qs-before-after.png)
+
+[comment]: <> (![before-after.png]&#40;/images/qs-before-after.png&#41;)
+<img src="/images/qs-before-after.png">
 As the writer of a [Datomic query](https://docs.datomic.com/on-prem/query/query.html), you have control over query clause ordering which can be very powerful if you have sufficient information to order query clauses by most-to-least selective. Some measures of clause selectivity are the amount of rows flowing in and out of each clause, as well as the boundedness of logic variables used by each clause. The information returned by query-stats can inform you of those measures and be used to make an informed decision about clause ordering.
 
 We will be using the [MusicBrainz sample database code repository](https://github.com/Datomic/mbrainz-sample) for all examples in this article. For a quick walkthrough on how to get Datomic running locally with the [MusicBrainz sample database](https://github.com/Datomic/mbrainz-sample#getting-the-data), please check out the [README](https://github.com/Datomic/mbrainz-sample/blob/master/README.md#getting-started).
