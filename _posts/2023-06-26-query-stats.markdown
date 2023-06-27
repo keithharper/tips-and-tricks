@@ -1,12 +1,11 @@
 ---
 layout: post
-title:  "Leveraging Query Stats"
+title:  Leveraging Query Stats
 date:   2023-06-26 14:16:27 -0400
-parent: Posts
+nav_order: 2
+parent: Home
 ---
-
 # {{ page.title }}
-
 ![before-after.png]({{ site.baseurl }}/assets/img/qs-before-after.png)
 As the writer of a  [Datomic query](https://docs.datomic.com/on-prem/query/query.html), you have control over query clause ordering which can be very powerful if you have sufficient information to order query clauses by most-to-least selective. Some measures of clause selectivity are the amount of rows flowing in and out of each clause, as well as the boundedness of logic variables used by each clause. The information returned by query-stats can inform you of those measures and be used to make an informed decision about clause ordering.
 
