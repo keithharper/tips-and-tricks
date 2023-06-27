@@ -33,6 +33,8 @@ search_enabled: false
 
 # Build settings
 theme: just-the-docs
+include:
+  - _sass/
 
 # Exclude from processing.
 # The following items will not be processed, by default.
