@@ -6,7 +6,7 @@ parent: Posts
 ---
 
 # {{ page.title }}
-![before-after.png](/assets/images/qs-before-after.png)
+![before-after.png](/images/qs-before-after.png)
 As the writer of a [Datomic query](https://docs.datomic.com/on-prem/query/query.html), you have control over query clause ordering which can be very powerful if you have sufficient information to order query clauses by most-to-least selective. Some measures of clause selectivity are the amount of rows flowing in and out of each clause, as well as the boundedness of logic variables used by each clause. The information returned by query-stats can inform you of those measures and be used to make an informed decision about clause ordering.
 
 We will be using the [MusicBrainz sample database code repository](https://github.com/Datomic/mbrainz-sample) for all examples in this article. For a quick walkthrough on how to get Datomic running locally with the [MusicBrainz sample database](https://github.com/Datomic/mbrainz-sample#getting-the-data), please check out the [README](https://github.com/Datomic/mbrainz-sample/blob/master/README.md#getting-started).
@@ -110,7 +110,7 @@ Notice how `:binds-out` no longer has `?artist-name`, but does have a new bindin
 
 Now we get to the first clause that introduces an actual result set expansion. The query-stats for this clause indicate that 21 releases were found in which John Lennon was one of the artists.
 
-![clause3-clause4.png](/assets/images/clause3-clause4.png)
+![clause3-clause4.png](/images/clause3-clause4.png)
 
 #### Clause 4
 ```clojure
