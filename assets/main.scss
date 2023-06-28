@@ -1,0 +1,18 @@
+---
+---
+@import "minima";
+
+a, .site-title {
+    color: #1cb14a !important;
+}
+@media (min-width: 66.5rem) {
+    .main {
+        margin-left: Max(16.5rem, calc((75% - 66.5rem) / 2 + 16.5rem));
+        max-width: 75rem;
+    }
+}
+@media (min-width: 66.5rem) {
+    .side-bar {
+        width: calc((75% - 66.5rem) / 2 + 16.5rem); min-width: 16.5rem;
+    }
+}

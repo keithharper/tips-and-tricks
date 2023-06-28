@@ -1,11 +1,11 @@
 ---
 layout: post
 title:  Leveraging Query Stats
+author: Keith Harper
 date:   2023-06-26 14:16:27 -0400
 nav_order: 2
 parent: Home
 ---
-# {{ page.title }}
 ![before-after.png]({{ site.baseurl }}/assets/img/qs-before-after.png)
 As the writer of a  [Datomic query](https://docs.datomic.com/on-prem/query/query.html), you have control over query clause ordering which can be very powerful if you have sufficient information to order query clauses by most-to-least selective. Some measures of clause selectivity are the amount of rows flowing in and out of each clause, as well as the boundedness of logic variables used by each clause. The information returned by query-stats can inform you of those measures and be used to make an informed decision about clause ordering.
 
@@ -14,7 +14,7 @@ We will be using the [MusicBrainz sample database code repository](https://githu
 We’re going to use query-stats to achieve the “after” state depicted in the image above by keeping the intermediate result set as small as possible in between clauses.
 
 ## How to request query-stats
-Starting in [v1.0.6610 of Datomic On-Prem一soon](https://forum.datomic.com/t/datomic-1-0-6610-now-available/2176) to be released to Datomic Cloud一users can now ask for query-stats when running queries.
+Starting in [v1.0.6610 of Datomic On-Prem](https://forum.datomic.com/t/datomic-1-0-6610-now-available/2176) 一soon to be released to Datomic Cloud一users can now ask for query-stats when running queries.
 
 To run a query while accumulating query-stats, we will need to leverage [datomic.api/query](https://docs.datomic.com/on-prem/clojure/index.html#datomic.api/query) and supply `:query-stats true` in the query-map argument.
 
@@ -59,7 +59,7 @@ You may notice that there is an extra query clause in the schedule which wasn’
 ### `:clauses`
 
 `:clauses` is fairly self-explanatory, but for clarity this contains the query clauses that were run for this phase.
-
+```
 | clause                               | rows-in | rows-out | binds-in                | binds-out               | expansion | preds              |
 |--------------------------------------|---------|----------|-------------------------|-------------------------|-----------|--------------------|
 | [(ground $__in__2) ?artist-name]     | 0       | 1        | ()                      | [?artist-name]          | 1         |                    |
@@ -67,7 +67,7 @@ You may notice that there is an extra query clause in the schedule which wasn’
 | [?release :release/artists ?artist]  | 1       | 21       | [?artist]               | [?release]              | 20        |                    |
 | [?release :release/name ?album-name] | 21      | 21       | [?release]              | [?album-name  ?release] |           |                    |
 | [?release :release/year ?year]       | 21      | 3        | [?album-name  ?release] | [?year  ?album-name]    |           | ([(< ?year 1970)]) |
-
+```
 The table above might make it somewhat easier to interpret the query-stats for clauses. Notice how the `:rows-in` & `:binds-in` for one clause directly correspond to the `:rows-out` & `:binds-out` for the previous clause.
 
 #### Clause 1
