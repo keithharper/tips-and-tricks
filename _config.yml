@@ -29,13 +29,9 @@ baseurl: "/tips-and-tricks" # the subpath of your site, e.g. /blog
 url: "https://keithharper.github.io/tips-and-tricks" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  keithharper
 
-search_enabled: false
-
 # Build settings
-#theme: just-the-docs
 theme: minima
-#include:
-#  - _sass/
+date_format: "%b %-d, %Y" # can adapt for other locales
 
 # Exclude from processing.
 # The following items will not be processed, by default.
