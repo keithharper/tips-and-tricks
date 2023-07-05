@@ -4,6 +4,7 @@ title:  Leveraging Query Stats
 author: Keith Harper
 date:   2023-06-26 14:16:27 -0400
 nav_order: 2
+categories: Query Schema
 parent: Home
 ---
 ![before-after.png]({{ site.baseurl }}/assets/img/qs-before-after.png)

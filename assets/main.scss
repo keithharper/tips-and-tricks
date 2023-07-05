@@ -6,8 +6,16 @@ a, .site-title {
     color: #1cb14a !important;
 }
 
-.post-preview {
-    list-style: none;
-    postition: relative;
-    display: block;
+.post-category {
+
+}
+
+header > .wrapper {
+    max-width: 100%;
+}
+
+.latest-posts-group {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: 56px 144px;
 }
