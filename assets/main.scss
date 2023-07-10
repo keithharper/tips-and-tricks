@@ -19,3 +19,11 @@ header > .wrapper {
     grid-template-columns: repeat(2,1fr);
     grid-template-rows: 56px 144px;
 }
+
+.site-nav {
+    display: flex;
+}
+
+.page-link {
+    display: initial;
+}

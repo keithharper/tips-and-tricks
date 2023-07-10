@@ -22,27 +22,41 @@ layout: default
     <h2 class="post-list-heading">{{ page.list_title }}</h2>
     {%- endif -%}
 
-    <div class="latest-posts-group">
-        <img src="{{ site.baseurl }}/assets/img/tips-and-tricks.png">
-        <ul class="post-list">
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img src="{{ site.baseurl }}/assets/img/tips-and-tricks.png" class="rounded">
+            </div>
+        </div>
+        <div class="row align-items-start">
             {% for post in posts limit:3 %}
-            <li>
+            <div class="col-md-3 card gy-3 ms-md-5">
                 <span class="post-meta">{{ post.date | date: site.date_format }}</span>
                 <h3>
                     {% for category in post.categories limit:3 %}
-                    <span class="post-meta post-category">{{ category }}</span>
+                    <div>
+                    <span class="badge rounded-pill bg-secondary">{{ category }}</span>
+                    </div>
                     {% endfor %}
                     <a class="post-link" href="{{ post.url | relative_url }}">
                         {{ post.title | escape }}
                     </a>
                 </h3>
 <!--                {{ post.excerpt | strip_html | truncatewords:75 }}-->
-            </li>
+            </div>
             {% endfor %}
-        </ul>
-    </div>
+        </div>
 
-    <a href="{{ site.baseurl }}/post-listing.html">View All Posts</a>
+        <div class="row align-items-end">
+            <div class="col offset-md-4 gy-3">
+                <h4>
+                <a href="{{ site.baseurl }}/post-listing.html">View All Posts</a>
+                </h4>
+            </div>
+        </div>
+    </div>
 
     {%- endif -%}
 
