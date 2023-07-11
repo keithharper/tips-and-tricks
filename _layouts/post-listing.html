@@ -7,30 +7,35 @@ layout: base
 
     {% assign posts = site.posts %}
 
-    {%- if posts.size > 0 -%}
-        {%- if page.list_title -%}
-        <h2 class="post-list-heading">{{ page.list_title }}</h2>
-        {%- endif -%}
-
+    {% if posts.size > 0 %}
     <div>
         <ul class="post-list">
             {% for post in posts %}
             <div class="gy-3 mb-3 mx-auto">
-                <div class="card p-2">
+                <div class="card p-3">
+                    <h4 class="card-link mb-1">
+                        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+                    </h4>
+
                     <span class="card-subtitle">
-                        <h6 class="mb-2 mt-2 text-muted">{{ post.date | date: site.date_format }}</h6>
+                        {% if post.author %}
+                        <h6 class="mt-0 mb-1 text-muted">{{ post.date | date: site.date_format }} • {{ post.author }}</h6>
+                        {% else %}
+                        <h6 class="mb-0 text-muted">{{ post.date | date: site.date_format }}</h6>
+                        {% endif %}
+
+                        {% if post.categories.size > 0 %}
                         <div>
                             {% for category in post.categories limit:3 %}
                             <span class="badge rounded-pill bg-secondary">{{ category }}</span>
                             {% endfor %}
                         </div>
+                        {% endif %}
+
+
                     </span>
 
-                    <h4 class="card-link">
-                        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-                    </h4>
-
-                    <h6 class="card-text">{{ post.excerpt | strip_html | truncatewords:25 }}</h6>
+                    <h6 class="mt-1 card-text">{{ post.excerpt | strip_html | truncatewords:25 }}</h6>
                 </div>
 
             </div>

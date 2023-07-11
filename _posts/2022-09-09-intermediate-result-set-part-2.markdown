@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  Intermediate Result Set part 2
-author: Keith Harper
 date:   2022-09-09 14:16:27 -0400
 parent: Home
 ---
