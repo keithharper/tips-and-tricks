@@ -3,24 +3,14 @@ layout: base
 ---
 
 <div class="home">
-    <!--    {%- if page.title -%}-->
-    <!--    <h1 class="page-heading">{{ page.title }}</h1>-->
-    <!--    {%- endif -%}-->
-
     {{ content }}
 
-
-    {% if site.paginate %}
-    {% assign posts = paginator.posts %}
-    {% else %}
     {% assign posts = site.posts %}
-    {% endif %}
-
 
     {%- if posts.size > 0 -%}
-    {%- if page.list_title -%}
-    <h2 class="post-list-heading">{{ page.list_title }}</h2>
-    {%- endif -%}
+        {%- if page.list_title -%}
+        <h2 class="post-list-heading">{{ page.list_title }}</h2>
+        {%- endif -%}
 
 
     <div class="">
@@ -34,20 +24,20 @@ layout: base
             {% for post in posts limit:3 %}
             <div class="col-md-3 gy-3 mb-3 d-flex mx-auto">
                 <div class="card p-2">
-                <span class="card-subtitle">
-                    <h6 class="mb-2 mt-2 text-muted">{{ post.date | date: site.date_format }}</h6>
-                    <div>
-                        {% for category in post.categories limit:3 %}
-                        <span class="badge rounded-pill bg-secondary">{{ category }}</span>
-                        {% endfor %}
-                    </div>
-                </span>
-                <h4 class="card-link">
-                    <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-                </h4>
-                    <h6 class="card-text">
-                                        {{ post.excerpt | strip_html | truncatewords:25 }}
-                    </h6>
+                    <span class="card-subtitle">
+                        <h6 class="mb-2 mt-2 text-muted">{{ post.date | date: site.date_format }}</h6>
+                        <div>
+                            {% for category in post.categories limit:3 %}
+                            <span class="badge rounded-pill bg-secondary">{{ category }}</span>
+                            {% endfor %}
+                        </div>
+                    </span>
+
+                    <h4 class="card-link">
+                        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+                    </h4>
+
+                    <h6 class="card-text">{{ post.excerpt | strip_html | truncatewords:25 }}</h6>
                 </div>
 
             </div>
